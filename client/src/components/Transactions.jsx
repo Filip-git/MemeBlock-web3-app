@@ -9,27 +9,31 @@ export const TransactionsCard = ({ addressTo, addressFrom, timestamp, message, k
     const gifUrl = useFetch({ keyword });
     const transactionList = Array.isArray(transactions) ? transactions : [];
 
-
     return (
         <div className="bg-[#181918] m-4 flex flex-1 2xl:min-w-[450px] 2xl:max-w-[500px] sm:min-w-[270px] sm:max-w-[300px] min-w-full flex-col p-3 rounded-md hover:shadow-2xl">
             <div className="flex flex-col items-center w-full mt-3">
                 <div className="display-flex justify-start w-full mb-6 p-2">
                     <a href={`https://goerli.etherscan.io/address/${addressFrom}`} target="_blank" rel="noreferrer" className="text-[#37c7da] hover:underline">
-                        <p className="text-white text-base"><span className="text-[#37c7da] font-bold">From:</span> {shortenEthereumAddress(addressFrom)}</p>
+                        <p className="text-white text-base">
+                            <span className="text-[#37c7da] font-bold">From:</span> {shortenEthereumAddress(addressFrom)}
+                        </p>
                     </a>
                     <a href={`https://goerli.etherscan.io/address/${addressTo}`} target="_blank" rel="noreferrer" className="text-[#37c7da] hover:underline">
-                        <p className="text-white text-base "><span className="text-[#37c7da] font-bold">To:</span> {shortenEthereumAddress(addressTo)}</p>
+                        <p className="text-white text-base">
+                            <span className="text-[#37c7da] font-bold">To:</span> {shortenEthereumAddress(addressTo)}
+                        </p>
                     </a>
                     <p className="text-[#37c7da] text-base">
                         <span className="font-bold">Amount:</span>{" "}
-                        <span className="text-white  italic"><FaEthereum className="inline mr-1 w-3 h-4 " />
-                            <span className="inline">
-                                {amount} ETH
-                            </span>
+                        <span className="text-white  italic">
+                            <FaEthereum className="inline mr-1 w-3 h-4" />
+                            <span className="inline">{amount} ETH</span>
                         </span>
                     </p>
-                    <p className="text-[#37c7da] text-base "> <span className="font-bold">Time:</span> <span className="text-white italic ">{timestamp}</span></p>
-
+                    <p className="text-[#37c7da] text-base">
+                        <span className="font-bold">Time:</span>{" "}
+                        <span className="text-white italic">{timestamp}</span>
+                    </p>
                 </div>
                 <img
                     src={gifUrl || url}
@@ -47,7 +51,7 @@ export const TransactionsCard = ({ addressTo, addressFrom, timestamp, message, k
 const Transactions = () => {
     const { transactions, currentAccount } = useContext(TransactionContext);
     const [currentPage, setCurrentPage] = useState(1);
-    const transactionsPerPage = 6;
+    const transactionsPerPage = 3;
 
     const transactionList = Array.isArray(transactions) ? transactions : [];
 
@@ -77,7 +81,7 @@ const Transactions = () => {
                     </h3>
                 )}
 
-                <div className="flex flex-wrap justify-center items-center mt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-10">
                     {transactionsToDisplay.map((transaction, i) => (
                         <TransactionsCard key={i} {...transaction} />
                     ))}
@@ -85,7 +89,7 @@ const Transactions = () => {
 
                 {reversedTransactionList.length > transactionsPerPage && (
                     <div className="flex justify-center mt-4">
-                        {Array.from(Array(Math.ceil(reversedTransactionList.length / transactionsPerPage))).map((_, index) => (
+                        {Array.from(Array(Math.ceil(reversedTransactionList.length / transactionsPerPage)).keys()).map((index) => (
                             <button
                                 key={index}
                                 className={`mx-2 p-2 cursor-pointer ${currentPage === index + 1 ? 'text-blue-500' : 'text-white'}`}

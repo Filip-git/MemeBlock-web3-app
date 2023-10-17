@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
-import { AiFillPlayCircle } from 'react-icons/ai'
 import { SiEthereum } from 'react-icons/si'
 import { BsInfoCircle } from 'react-icons/bs'
 import { TransactionContext } from '../context/TransactionContext'
-import { ethers } from 'ethers';
 import { Loader } from './';
 import { shortenEthereumAddress } from "../utils/shortenEthereumAddress";
 
@@ -20,7 +18,6 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
         className='my-2 w-full rounded-lg p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism'
     />
 );
-
 
 
 
@@ -46,7 +43,7 @@ const Welcome = () => {
                 <div className='flex flex-1 justify-start flex-col mf:mr-10'>
                     <h1 className='text-3xl sm:text-5xl text-white text-gradient py-1'>Send Memes <br /> accross the world</h1>
                     <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-                        Where GIFs Come to Life!.</p>
+                        Where GIFs Come to Life!</p>
 
                     {!currentAccount && (
                         <button
@@ -61,9 +58,9 @@ const Welcome = () => {
 
                     <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
                         <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
-                            Reliability
+                            Fun
                         </div>
-                        <div className={companyCommonStyles}>Security</div>
+                        <div className={companyCommonStyles}>Secure</div>
                         <div className={`sm:rounded-tr-2xl ${companyCommonStyles}`}>
                             Ethereum
                         </div>
@@ -82,11 +79,13 @@ const Welcome = () => {
                         <div className='flex justify-between flex-col w-full h-full'>
                             <div className='flex justify-between items-start'>
                                 <div className='w-10 h-10 rounded-full border-2 border-white flex justify-center items-center'><SiEthereum fontSize={21} color='white' /></div>
-                                <BsInfoCircle color='white' />
+                                <a href='https://github.com/Filip-git/MemeBlock-web3-app#readme' target="_blank" rel="noreferrer"> <BsInfoCircle color='white' /></a>
                             </div>
                             <div>
-                                <p className='text-white font-light text-sm'> {shortenEthereumAddress(currentAccount)}
-                                </p>
+                                <a href={`https://goerli.etherscan.io/address/${currentAccount}`} target="_blank" rel="noreferrer" className="text-[#37c7da] hover:underline">
+                                    <p className='text-white font-light text-sm'> {shortenEthereumAddress(currentAccount)}
+                                    </p>
+                                </a>
                                 <p className="text-white font-semibold text-lg">Ethereum</p>
                             </div>
                         </div>
@@ -94,8 +93,8 @@ const Welcome = () => {
                     <div className='p-5 sm:w-96 w-full flex flex-col justify-start items-start blue-glassmorphism'>
                         <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange} />
                         <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange} />
-                        <Input placeholder="Keyword (Meme)" name="keyword" type="text" handleChange={handleChange} />
-                        <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange} />
+                        <Input placeholder="Keyword (GIF)" name="keyword" type="text" handleChange={handleChange} />
+                        <Input placeholder="Message" name="message" type="text" handleChange={handleChange} />
 
 
 
