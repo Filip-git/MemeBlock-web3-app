@@ -23,7 +23,7 @@ export const Navbar = () => {
                 <img src={logo} alt="logo" className="w-32 cursor-pointer" />
             </div>
             <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-                {["Market", "Exchange", "News", "Tutorials", "Wallets"].map((item, index) => (
+                {["Market", "Exchange", "News", "Education"].map((item, index) => (
                     <NavBarItem key={item + index} title={item} />
                 ))}
                 {currentAccount ? (
@@ -53,7 +53,7 @@ export const Navbar = () => {
                         <li className='text-xl w-full my-2'>
                             <MdOutlineClose onClick={() => setToggleMenu(false)} className='cursor-pointer' />
                         </li>
-                        {["Market", "Exchange", "News", "Tutorials", "Wallets"].map((item, index) => (
+                        {["Market", "Exchange", "News", "Education"].map((item, index) => (
                             <NavBarItem key={item + index} title={item} classProps='my-2' />
                         ))}
 
