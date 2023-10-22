@@ -72,28 +72,31 @@ const Transactions = () => {
         <div className="flex w-full justify-center items-center 2xl:px-20 gradient-bg-transactions">
             <div className="flex flex-col md:p-12 py-12 px-4">
                 {currentAccount ? (
-                    <h3 className="text-white text-3xl text-center my-2">
+                    <h3 className="text-white text-3xl text-center my-2" data-aos="fade-up">
                         Latest Transactions
                     </h3>
                 ) : (
-                    <h3 className="text-white text-3xl text-center my-2">
+                    <h3 className="text-white text-3xl text-center my-2" data-aos="fade-up">
                         Connect your account to see the latest transactions
                     </h3>
                 )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-10">
                     {transactionsToDisplay.map((transaction, i) => (
-                        <TransactionsCard key={i} {...transaction} />
+                        <div key={i} data-aos="fade-up">
+                            <TransactionsCard {...transaction} />
+                        </div>
                     ))}
                 </div>
 
                 {reversedTransactionList.length > transactionsPerPage && (
-                    <div className="flex justify-center mt-4">
+                    <div className="flex justify-center mt-4" data-aos="fade-up">
                         {Array.from(Array(Math.ceil(reversedTransactionList.length / transactionsPerPage)).keys()).map((index) => (
                             <button
                                 key={index}
                                 className={`mx-2 p-2 cursor-pointer ${currentPage === index + 1 ? 'text-blue-500' : 'text-white'}`}
                                 onClick={() => handlePageChange(index + 1)}
+
                             >
                                 {index + 1}
                             </button>
@@ -103,6 +106,6 @@ const Transactions = () => {
             </div>
         </div>
     );
-};
+}
 
 export default Transactions;
