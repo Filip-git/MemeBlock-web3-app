@@ -6,3 +6,5 @@ export { default as Transactions } from './Transactions';
 export { default as Welcome } from './Welcome';
 export { default as Education } from './Education';
 export { default as ProgressComponent } from './ProgressComponent';
+export { default as News } from './News';
+export { default as Market } from './Market';

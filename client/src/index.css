@@ -28,6 +28,22 @@ body {
         radial-gradient(at 50% 0%, rgb(67, 80, 123) 0, transparent 50%);
 }
 
+.gradient-bg-education {
+    background-color: #0f0e13;
+    background-image:
+        radial-gradient(at 70% 70%, rgb(1, 0, 6) 0, transparent 50%),
+        radial-gradient(at 50% 50%, rgb(67, 80, 123) 0, transparent 50%);
+}
+
+
+.gradient-bg-news {
+    background-color: #0f0e13;
+    background-image:
+        radial-gradient(at 50% 50%, rgb(2, 0, 9) 0, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(67, 80, 123, 0.77) 0, transparent 50%),
+        radial-gradient(at 0% 0%, rgba(67, 80, 123, 0.77) 0, transparent 50%);
+}
+
 .gradient-bg-transactions {
     background-color: #0f0e13;
     background-image:
@@ -39,7 +55,7 @@ body {
     background-color: #0f0e13;
     background-image:
         radial-gradient(at 0% 100%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
-        radial-gradient(at 50% 150%, rgba(103, 54, 188, 0.812) 0, transparent 50%);
+        radial-gradient(at 50% 150%, #6736bccf 0, transparent 50%);
 }
 
 .blue-glassmorphism {
@@ -75,6 +91,16 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.bg-correct {
+    background: linear-gradient(to right, #00C853, #00C853) !important;
+}
+
+.bg-incorrect {
+    background: linear-gradient(to right, #FF0000, #FF0000) !important;
+}
+
+
 
 @tailwind base;
 @tailwind components;

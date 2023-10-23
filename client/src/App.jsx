@@ -1,4 +1,4 @@
-import { Navbar, Welcome, Footer, Services, Transactions, Education, ProgressComponent } from './components';
+import { Navbar, Welcome, Footer, Services, Transactions, Education, ProgressComponent, News, Market } from './components';
 
 const App = () => {
 
@@ -12,6 +12,8 @@ const App = () => {
       <ProgressComponent />
       <Transactions />
       <Education />
+      <Market />
+      <News />
       <Footer />
     </div>
   )
