@@ -20,7 +20,6 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 
-
 const Welcome = () => {
 
     const { connectWallet, currentAccount, formData, handleChange, sendTransaction, setFormData, isLoading } = useContext(TransactionContext);
@@ -38,9 +37,9 @@ const Welcome = () => {
 
 
     return (
-        <div className='flex w-full justify-center items-center'>
+        <div className='flex w-full justify-center items-center' data-aos="zoom-in" data-aos-duration="2000">
             <div className='flex mf:flex-row flex-col items-start justify-between md:p-20 p-12 px-4'>
-                <div className='flex flex-1 justify-start flex-col mf:mr-10'>
+                <div className='flex flex-1 justify-start flex-col mf:mr-16' >
                     <h1 className='text-3xl sm:text-5xl text-white text-gradient py-1'>Send Memes <br /> accross the world</h1>
                     <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
                         Where GIFs Come to Life!</p>
