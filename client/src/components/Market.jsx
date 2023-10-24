@@ -7,17 +7,38 @@ const Market = () => {
     const [numToShow, setNumToShow] = useState(9);
     const [noCoinsFound, setNoCoinsFound] = useState(false);
 
-
     useEffect(() => {
-        Axios.get('https://api.coinstats.app/public/v1/coins?skip=0').then((response) => {
-            setListOfCoins(response.data.coins);
-            //   console.log('Fetched Data:', response.data.coins);
-        });
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                'X-API-KEY': 'xfjf08X+CZ3ghvCRGZTm4GJt32Y3zm12p43MDb7d6Jw='
+            }
+        };
+
+        fetch('https://openapiv1.coinstats.app/coins', options)
+            .then(response => response.json())
+            .then(response => {
+                console.log('Fetched Data:', response);
+
+                if (response && response.result) {
+                    setListOfCoins(response.result);
+                    console.log(listOfCoins)
+                } else {
+                    setListOfCoins([]);
+                }
+            })
+            .catch(err => console.error(err));
     }, []);
 
     const filteredCoins = listOfCoins
-        .filter((coin) => coin.name.toLowerCase().includes(searchWord.toLowerCase()))
+        .filter((coin) =>
+            coin.name.toLowerCase().includes(searchWord.toLowerCase()) ||
+            coin.symbol.toLowerCase().includes(searchWord.toLowerCase())
+        )
         .slice(0, numToShow);
+
+
 
     function Coin({ data }) {
         const { name, icon, price, symbol, websiteUrl, rank, priceChange1d
@@ -69,7 +90,7 @@ const Market = () => {
     }
 
     const showMoreCoins = () => {
-        setNumToShow((prev) => prev + 9);
+        setNumToShow(prev => prev + 9);
     };
 
     return (
@@ -77,7 +98,7 @@ const Market = () => {
             <div className="mb-4">
                 <input
                     type="text"
-                    placeholder="Search any Top 100 cryptocurrency..."
+                    placeholder="Search any Top 20 cryptocurrency..."
                     className="bg-[#000000] border p-3 rounded-md w-full focus:ring focus:ring-purple-400 focus:outline-none text-gray-600"
                     onChange={(event) => {
                         setSearchWord(event.target.value);
@@ -95,7 +116,7 @@ const Market = () => {
                     ))
                 ) : (
                     <div className="text-red-500 text-center mt-4">
-                        Unfortunately, the cryptocurrency isn't in the top 100 at the moment.
+                        Unfortunately, {searchWord} isn't in the top 20 at the moment.
                     </div>
                 )}
             </div>
