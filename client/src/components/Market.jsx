@@ -19,11 +19,11 @@ const Market = () => {
         fetch('https://openapiv1.coinstats.app/coins', options)
             .then(response => response.json())
             .then(response => {
-                console.log('Fetched Data:', response);
+                //     console.log('Fetched Data:', response);
 
                 if (response && response.result) {
                     setListOfCoins(response.result);
-                    console.log(listOfCoins)
+                    //       console.log(listOfCoins)
                 } else {
                     setListOfCoins([]);
                 }
@@ -90,7 +90,7 @@ const Market = () => {
     }
 
     const showMoreCoins = () => {
-        setNumToShow(prev => prev + 9);
+        setNumToShow(prev => prev + 3);
     };
 
     return (
