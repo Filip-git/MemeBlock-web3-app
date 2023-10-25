@@ -107,23 +107,26 @@ const Education = () => {
     const [showQuiz, setShowQuiz] = useState(false);
 
     const handleAnswerClick = (selectedOptionIndex) => {
-        const correctAnswerIndex = questions[currentQuestion].correctAnswer;
-        const isCorrect = selectedOptionIndex === correctAnswerIndex;
-        setSelectedOption(selectedOptionIndex);
+        if (selectedOption === null) { // Check if the user has not selected an answer yet
+            const correctAnswerIndex = questions[currentQuestion].correctAnswer;
+            const isCorrect = selectedOptionIndex === correctAnswerIndex;
+            setSelectedOption(selectedOptionIndex);
 
-        if (isCorrect) {
-            setScore(score + 1);
-        }
-
-        setTimeout(() => {
-            if (currentQuestion + 1 < questions.length) {
-                setCurrentQuestion(currentQuestion + 1);
-                setSelectedOption(null);
-            } else {
-                setShowResult(true);
+            if (isCorrect) {
+                setScore(score + 1);
             }
-        }, 900); // Delay before moving to the next question
+
+            setTimeout(() => {
+                if (currentQuestion + 1 < questions.length) {
+                    setCurrentQuestion(currentQuestion + 1);
+                    setSelectedOption(null);
+                } else {
+                    setShowResult(true);
+                }
+            }, 900); // Delay before moving to the next question
+        }
     };
+
 
     const nextSlide = () => {
         if (currentSlide < educationSlides.length - 1) {
